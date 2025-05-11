@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Proxmox &#8212; Homelab 1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=cb25574f" />
+    <script src="_static/documentation_options.js?v=29a6c3e3"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Kernel IP Routing Table" href="routing-table.html" />
+    <link rel="prev" title="Laptop (or PC) mods" href="laptop.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="proxmox">
+<h1>Proxmox<a class="headerlink" href="#proxmox" title="Link to this heading">¶</a></h1>
+<p>remove firewall from talos worker node</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>root@pve:~#<span class="w"> </span>qm<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="m">109</span><span class="w"> </span>-net0<span class="w"> </span>virtio,bridge<span class="o">=</span>vmbr0,firewall<span class="o">=</span><span class="m">0</span>
+update<span class="w"> </span>VM<span class="w"> </span><span class="m">109</span>:<span class="w"> </span>-net0<span class="w"> </span>virtio,bridge<span class="o">=</span>vmbr0,firewall<span class="o">=</span><span class="m">0</span>
+</pre></div>
+</div>
+<section id="setting-up-an-extra-network-bridge-vmbr1">
+<h2>setting up an extra network bridge vmbr1<a class="headerlink" href="#setting-up-an-extra-network-bridge-vmbr1" title="Link to this heading">¶</a></h2>
+<p>on lxc dedicated machine setup dhcp and routing</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt<span class="w"> </span>install<span class="w"> </span>dnsmasq<span class="w"> </span>-y
+apt<span class="w"> </span>install<span class="w"> </span>iptables-persistent<span class="w"> </span>-y
+
+vi<span class="w"> </span>/etc/dnsmasq.conf
+<span class="nv">interface</span><span class="o">=</span>eth0
+dhcp-range<span class="o">=</span><span class="m">10</span>.10.10.100,10.10.10.200,12h<span class="w">  </span><span class="c1"># DHCP range for Talos nodes</span>
+dhcp-option<span class="o">=</span><span class="m">3</span>,10.10.10.2<span class="w">                  </span><span class="c1"># Gateway (this machine’s eth0 IP)</span>
+dhcp-option<span class="o">=</span><span class="m">6</span>,192.168.0.1<span class="w">                 </span><span class="c1"># DNS (your home router’s DNS)</span>
+
+systemctl<span class="w"> </span>restart<span class="w"> </span>dnsmasq
+
+<span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/proc/sys/net/ipv4/ip_forward
+
+iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-L<span class="w"> </span>-v
+ip<span class="w"> </span>route<span class="w"> </span>del<span class="w"> </span>default<span class="w"> </span>via<span class="w"> </span><span class="m">10</span>.10.10.1<span class="w"> </span>dev<span class="w"> </span>eth0
+ip<span class="w"> </span>route<span class="w"> </span>replace<span class="w"> </span>default<span class="w"> </span>via<span class="w"> </span><span class="m">192</span>.168.0.1<span class="w"> </span>dev<span class="w"> </span>eth1<span class="w"> </span>metric<span class="w"> </span><span class="m">100</span>
+
+iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-A<span class="w"> </span>POSTROUTING<span class="w"> </span>-s<span class="w"> </span><span class="m">10</span>.10.10.0/24<span class="w"> </span>-o<span class="w"> </span>eth1<span class="w"> </span>-j<span class="w"> </span>MASQUERADE
+ip<span class="w"> </span>route<span class="w"> </span>del<span class="w"> </span>default<span class="w"> </span>via<span class="w"> </span><span class="m">10</span>.10.10.1<span class="w"> </span>dev<span class="w"> </span>eth0
+ip<span class="w"> </span>route<span class="w"> </span>replace<span class="w"> </span>default<span class="w"> </span>via<span class="w"> </span><span class="m">192</span>.168.0.1<span class="w"> </span>dev<span class="w"> </span>eth1<span class="w"> </span>metric<span class="w"> </span><span class="m">100</span>
+
+
+
+vi<span class="w"> </span>/etc/netplan/01-netcfg.yaml
+</pre></div>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">ethernets</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">eth0</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="c1"># Prevent DHCP from setting a default gateway if it conflicts</span>
+<span class="w">      </span><span class="nt">dhcp4-overrides</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">use-routes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">use-dns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">route-metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2000</span><span class="w">  </span><span class="c1"># High metric to prioritize eth1&#39;s default route</span>
+<span class="w">    </span><span class="nt">eth1</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">addresses</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.x/24</span><span class="w">  </span><span class="c1"># Replace with your server&#39;s IP on this subnet</span>
+<span class="w">      </span><span class="nt">routes</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0/0</span>
+<span class="w">          </span><span class="nt">via</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.1</span>
+<span class="w">          </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0/0</span>
+<span class="w">          </span><span class="nt">via</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.1</span>
+<span class="w">          </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1024</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.0/24</span>
+<span class="w">          </span><span class="nt">via</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0</span>
+<span class="w">          </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1024</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.1</span>
+<span class="w">          </span><span class="nt">via</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0</span>
+<span class="w">          </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1024</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;gent.dnscache01-ip&gt;</span>
+<span class="w">          </span><span class="nt">via</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.1</span>
+<span class="w">          </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1024</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;gent.dnscache02-ip&gt;</span>
+<span class="w">          </span><span class="nt">via</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.1</span>
+<span class="w">          </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1024</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apply the netplan configuration</span>
+sudo<span class="w"> </span>netplan<span class="w"> </span>generate
+sudo<span class="w"> </span>netplan<span class="w"> </span>apply
+
+<span class="c1"># Check the routing table</span>
+ip<span class="w"> </span>route<span class="w"> </span>show
+
+<span class="c1"># Check iptables rules</span>
+iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-L<span class="w"> </span>-v
+
+<span class="c1"># Check dnsmasq status</span>
+systemctl<span class="w"> </span>status<span class="w"> </span>dnsmasq
+
+<span class="c1"># Check if the DHCP server is running and listening on the correct interface</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>dnsmasq
+
+<span class="c1"># Restart dnsmasq to apply changes</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>dnsmasq
+
+
+netplan<span class="w"> </span>apply
+</pre></div>
+</div>
+</section>
+<section id="kernel-ip-routing-table">
+<h2>Kernel IP routing table<a class="headerlink" href="#kernel-ip-routing-table" title="Link to this heading">¶</a></h2>
+</section>
+<section id="using-the-nodeport">
+<h2>using the nodeport<a class="headerlink" href="#using-the-nodeport" title="Link to this heading">¶</a></h2>
+<p>192.168.0.251:30743</p>
+<p>on my router/dhcp on 10.10.10.2 route port to cluster node IP</p>
+<p>iptables -t nat -A PREROUTING -i eth1 -p tcp –dport 30743 -j DNAT –to-destination 10.10.10.118:30743</p>
+<p>so running nginx on kubernetes on 10.10.10.255 network is accessible from the outside</p>
+</section>
+<section id="using-the-ip-address">
+<h2>using the IP address<a class="headerlink" href="#using-the-ip-address" title="Link to this heading">¶</a></h2>
+<p>traefik      LoadBalancer   10.102.122.212   10.10.10.50   80:32178/TCP,443:32318/TCP   75m   app.kubernetes.io/instance=traefik-default,app.kubernetes.io/name=traefik</p>
+<p>So now I have to figure out how I can reach  10.10.10.50 from my 192.168.X.X network</p>
+<p>on the kubernetes cluster, traefik has been deployed as well as metallb.
+iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -d 10.10.10.0/24 -j MASQUERADE
+sh -c “iptables-save &gt; /etc/iptables/rules.v4”</p>
+<p>this has been added to th dnsmasq.conf</p>
+<p># Listen on the 192.168.0.251 interface
+interface=eth1  # Replace with your 192.168.0.251 interface (check with <cite>ip a</cite>)
+listen-address=192.168.0.251</p>
+<p># Forward other queries to upstream DNS (e.g., Google DNS)
+server=8.8.8.8
+server=8.8.4.4</p>
+<p># Optional: If LXC is your DHCP server, ensure DNS is offered
+dhcp-option=6,192.168.0.251  # Tells DHCP clients to use this as DNS</p>
+</section>
+<section id="modify-dns-config-on-laptop">
+<h2>modify dns config on laptop<a class="headerlink" href="#modify-dns-config-on-laptop" title="Link to this heading">¶</a></h2>
+<p>/etc/resolv.conf</p>
+<p>add : nameserver 192.168.0.251</p>
+</section>
+<section id="access-http-nginx-example-com-on-talos-within-10-10-10-x-from-192-168-x-x">
+<h2>access <a class="reference external" href="http://nginx.example.com/">http://nginx.example.com/</a> on talos within 10.10.10.X from 192.168.X.X<a class="headerlink" href="#access-http-nginx-example-com-on-talos-within-10-10-10-x-from-192-168-x-x" title="Link to this heading">¶</a></h2>
+<p>(configure metallb, traefik, nginx)</p>
+<p>on laptop /etc/hosts : 10.10.10.50 nginx.example.com</p>
+<p>on dhcp server (10.10.10.2)</p>
+<p>iptables -A FORWARD -s 192.168.0.0/24 -d 10.10.10.0/24 -j ACCEPT
+iptables -A FORWARD -s 10.10.10.0/24 -d 192.168.0.0/24 -j ACCEPT</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generated by iptables-save v1.8.7 on Thu Apr 10 13:32:59 2025</span>
+*filter
+:INPUT<span class="w"> </span>ACCEPT<span class="w"> </span><span class="o">[</span><span class="m">0</span>:0<span class="o">]</span>
+:FORWARD<span class="w"> </span>ACCEPT<span class="w"> </span><span class="o">[</span><span class="m">0</span>:0<span class="o">]</span>
+:OUTPUT<span class="w"> </span>ACCEPT<span class="w"> </span><span class="o">[</span><span class="m">0</span>:0<span class="o">]</span>
+-A<span class="w"> </span>FORWARD<span class="w"> </span>-s<span class="w"> </span><span class="m">192</span>.168.0.0/24<span class="w"> </span>-d<span class="w"> </span><span class="m">10</span>.10.10.0/24<span class="w"> </span>-j<span class="w"> </span>ACCEPT
+-A<span class="w"> </span>FORWARD<span class="w"> </span>-s<span class="w"> </span><span class="m">10</span>.10.10.0/24<span class="w"> </span>-d<span class="w"> </span><span class="m">192</span>.168.0.0/24<span class="w"> </span>-j<span class="w"> </span>ACCEPT
+COMMIT
+<span class="c1"># Completed on Thu Apr 10 13:32:59 2025</span>
+<span class="c1"># Generated by iptables-save v1.8.7 on Thu Apr 10 13:32:59 2025</span>
+*nat
+:PREROUTING<span class="w"> </span>ACCEPT<span class="w"> </span><span class="o">[</span><span class="m">6847</span>:1975161<span class="o">]</span>
+:INPUT<span class="w"> </span>ACCEPT<span class="w"> </span><span class="o">[</span><span class="m">158</span>:15156<span class="o">]</span>
+:OUTPUT<span class="w"> </span>ACCEPT<span class="w"> </span><span class="o">[</span><span class="m">25</span>:2590<span class="o">]</span>
+:POSTROUTING<span class="w"> </span>ACCEPT<span class="w"> </span><span class="o">[</span><span class="m">25</span>:2590<span class="o">]</span>
+-A<span class="w"> </span>PREROUTING<span class="w"> </span>-i<span class="w"> </span>eth1<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span>-m<span class="w"> </span>tcp<span class="w"> </span>--dport<span class="w"> </span><span class="m">30743</span><span class="w"> </span>-j<span class="w"> </span>DNAT<span class="w"> </span>--to-destination<span class="w"> </span><span class="m">10</span>.10.10.118:30743
+-A<span class="w"> </span>POSTROUTING<span class="w"> </span>-s<span class="w"> </span><span class="m">10</span>.10.10.0/24<span class="w"> </span>-o<span class="w"> </span>eth1<span class="w"> </span>-j<span class="w"> </span>MASQUERADE
+-A<span class="w"> </span>POSTROUTING<span class="w"> </span>-s<span class="w"> </span><span class="m">10</span>.10.10.0/24<span class="w"> </span>-o<span class="w"> </span>eth1<span class="w"> </span>-j<span class="w"> </span>MASQUERADE
+-A<span class="w"> </span>POSTROUTING<span class="w"> </span>-s<span class="w"> </span><span class="m">10</span>.10.10.0/24<span class="w"> </span>-o<span class="w"> </span>eth1<span class="w"> </span>-j<span class="w"> </span>MASQUERADE
+-A<span class="w"> </span>POSTROUTING<span class="w"> </span>-s<span class="w"> </span><span class="m">192</span>.168.0.0/24<span class="w"> </span>-d<span class="w"> </span><span class="m">10</span>.10.10.0/24<span class="w"> </span>-j<span class="w"> </span>MASQUERADE
+COMMIT
+<span class="c1"># Completed on Thu Apr 10 13:32:59 2025</span>
+<span class="c1"># Check the iptables rules</span>
+iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-L<span class="w"> </span>-v
+iptables<span class="w"> </span>-L<span class="w"> </span>-v
+
+<span class="c1"># Check the routing table</span>
+ip<span class="w"> </span>route<span class="w"> </span>show
+
+<span class="c1"># Check the network interfaces</span>
+ip<span class="w"> </span>a
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Homelab</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hpdl380p.html">Upgrading homelab HP DL 380p</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Where can I find more Templates?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usb.html">reading data from USB stick</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ramdisk.html">ramdisk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="share.html">sharing a directory for LXC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moving.html">moving a LXC container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nfs_netwerk.html">nfs network between linux containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nfs_proxmox_setup.html">NFS Host and Client Setup in Proxmox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nfs_client.html">nfs client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portainer.html">Portainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blender.html">server for blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ollama.html">ollama install and use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html#running-openwebui">running openwebui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html#copy-data-to-container">copy data to container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elastic.html">configure elasticview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mounting.html">mounting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mounting.html#edit-etc-fstab">edit  /etc/fstab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backuppve.html">Backup pve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raid.html">RAID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="melborp.html">melborp server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NVIDIA.html">Setting up NVIDIA Tesla P100</a></li>
+<li class="toctree-l1"><a class="reference internal" href="laptop.html">Laptop (or PC) mods</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Proxmox</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-an-extra-network-bridge-vmbr1">setting up an extra network bridge vmbr1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kernel-ip-routing-table">Kernel IP routing table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-nodeport">using the nodeport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-ip-address">using the IP address</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modify-dns-config-on-laptop">modify dns config on laptop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#access-http-nginx-example-com-on-talos-within-10-10-10-x-from-192-168-x-x">access http://nginx.example.com/ on talos within 10.10.10.X from 192.168.X.X</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routing-table.html">Kernel IP Routing Table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDA.html">SDA (software defined architecture)</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="laptop.html" title="previous chapter">Laptop (or PC) mods</a></li>
+      <li>Next: <a href="routing-table.html" title="next chapter">Kernel IP Routing Table</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2025, Jan Jansen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/cluster.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,87 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}intro}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}homelab}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}software}{1}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Upgrading homelab HP DL 380p}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}latest BIOS}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}M2 disk drive}{3}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Sata}{3}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Bootconfig}{3}{section.2.4}%
+\contentsline {chapter}{\numberline {3}AVX}{5}{chapter.3}%
+\contentsline {chapter}{\numberline {4}nvme}{7}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Where can I find more Templates?}{9}{chapter.5}%
+\contentsline {chapter}{\numberline {6}reading data from USB stick}{11}{chapter.6}%
+\contentsline {section}{\numberline {6.1}create a mp on CT (container02)}{11}{section.6.1}%
+\contentsline {section}{\numberline {6.2}transfer to CT (name = container02)}{11}{section.6.2}%
+\contentsline {chapter}{\numberline {7}ramdisk}{13}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Can I use RAM as a disk?}{13}{section.7.1}%
+\contentsline {section}{\numberline {7.2}speedtest}{13}{section.7.2}%
+\contentsline {chapter}{\numberline {8}sharing a directory for LXC}{15}{chapter.8}%
+\contentsline {section}{\numberline {8.1}modify the lxc}{15}{section.8.1}%
+\contentsline {section}{\numberline {8.2}on PVE modify the lxc config}{15}{section.8.2}%
+\contentsline {chapter}{\numberline {9}moving a LXC container}{17}{chapter.9}%
+\contentsline {chapter}{\numberline {10}nfs network between linux containers}{19}{chapter.10}%
+\contentsline {section}{\numberline {10.1}set up a bridge}{19}{section.10.1}%
+\contentsline {section}{\numberline {10.2}define an extra network interface in range 10.0.0.X}{19}{section.10.2}%
+\contentsline {chapter}{\numberline {11}NFS Host and Client Setup in Proxmox}{21}{chapter.11}%
+\contentsline {chapter}{\numberline {12}nfs client}{25}{chapter.12}%
+\contentsline {section}{\numberline {12.1}under node pve}{25}{section.12.1}%
+\contentsline {chapter}{\numberline {13}Portainer}{27}{chapter.13}%
+\contentsline {section}{\numberline {13.1}using a script}{27}{section.13.1}%
+\contentsline {section}{\numberline {13.2}by hand}{27}{section.13.2}%
+\contentsline {section}{\numberline {13.3}exporting \& importing}{27}{section.13.3}%
+\contentsline {chapter}{\numberline {14}server for blender}{29}{chapter.14}%
+\contentsline {section}{\numberline {14.1}howto render?}{29}{section.14.1}%
+\contentsline {section}{\numberline {14.2}faster / less good}{29}{section.14.2}%
+\contentsline {section}{\numberline {14.3}at the movies}{29}{section.14.3}%
+\contentsline {chapter}{\numberline {15}ollama install and use}{31}{chapter.15}%
+\contentsline {section}{\numberline {15.1}using a container}{31}{section.15.1}%
+\contentsline {chapter}{\numberline {16}docker}{33}{chapter.16}%
+\contentsline {chapter}{\numberline {17}running openwebui}{35}{chapter.17}%
+\contentsline {chapter}{\numberline {18}copy data to container}{37}{chapter.18}%
+\contentsline {chapter}{\numberline {19}configure elasticview}{39}{chapter.19}%
+\contentsline {section}{\numberline {19.1}elasticsearch password}{39}{section.19.1}%
+\contentsline {section}{\numberline {19.2}testing elasticview connection}{39}{section.19.2}%
+\contentsline {section}{\numberline {19.3}getting website certificate}{39}{section.19.3}%
+\contentsline {chapter}{\numberline {20}mounting}{41}{chapter.20}%
+\contentsline {chapter}{\numberline {21}edit /etc/fstab}{43}{chapter.21}%
+\contentsline {chapter}{\numberline {22}Backup pve}{45}{chapter.22}%
+\contentsline {chapter}{\numberline {23}RAID}{47}{chapter.23}%
+\contentsline {section}{\numberline {23.1}No more raid :}{47}{section.23.1}%
+\contentsline {chapter}{\numberline {24}melborp server}{49}{chapter.24}%
+\contentsline {section}{\numberline {24.1}solution for problem running pgadmin container and nginx}{49}{section.24.1}%
+\contentsline {chapter}{\numberline {25}Setting up NVIDIA Tesla P100}{51}{chapter.25}%
+\contentsline {section}{\numberline {25.1}Aliexpress}{51}{section.25.1}%
+\contentsline {section}{\numberline {25.2}Cutting the Riser}{51}{section.25.2}%
+\contentsline {section}{\numberline {25.3}Configure the BIOS}{51}{section.25.3}%
+\contentsline {section}{\numberline {25.4}configure proxmox host}{51}{section.25.4}%
+\contentsline {section}{\numberline {25.5}the idea}{52}{section.25.5}%
+\contentsline {section}{\numberline {25.6}Download NVIDIA drivers}{52}{section.25.6}%
+\contentsline {section}{\numberline {25.7}adapt lxc.conf}{52}{section.25.7}%
+\contentsline {section}{\numberline {25.8}copy NVIDIA driver to LXC}{52}{section.25.8}%
+\contentsline {section}{\numberline {25.9}Install the NVIDIA Container Toolkit}{52}{section.25.9}%
+\contentsline {section}{\numberline {25.10}install ollama docker container for GPU usage}{52}{section.25.10}%
+\contentsline {chapter}{\numberline {26}Laptop (or PC) mods}{53}{chapter.26}%
+\contentsline {section}{\numberline {26.1}make route permanent}{53}{section.26.1}%
+\contentsline {chapter}{\numberline {27}Proxmox}{55}{chapter.27}%
+\contentsline {section}{\numberline {27.1}setting up an extra network bridge vmbr1}{55}{section.27.1}%
+\contentsline {section}{\numberline {27.2}Kernel IP routing table}{57}{section.27.2}%
+\contentsline {section}{\numberline {27.3}using the nodeport}{57}{section.27.3}%
+\contentsline {section}{\numberline {27.4}using the IP address}{57}{section.27.4}%
+\contentsline {section}{\numberline {27.5}modify dns config on laptop}{57}{section.27.5}%
+\contentsline {section}{\numberline {27.6}access http://nginx.example.com/ on talos within 10.10.10.X from 192.168.X.X}{57}{section.27.6}%
+\contentsline {chapter}{\numberline {28}Talos}{59}{chapter.28}%
+\contentsline {section}{\numberline {28.1}new install talos}{59}{section.28.1}%
+\contentsline {section}{\numberline {28.2}adding worker nodes}{60}{section.28.2}%
+\contentsline {section}{\numberline {28.3}label nodes}{60}{section.28.3}%
+\contentsline {chapter}{\numberline {29}Kernel IP Routing Table}{61}{chapter.29}%
+\contentsline {chapter}{\numberline {30}SDA (software defined architecture)}{63}{chapter.30}%
+\contentsline {section}{\numberline {30.1}Physical Infrastructure}{63}{section.30.1}%
+\contentsline {section}{\numberline {30.2}Proxmox Server Specifications}{63}{section.30.2}%
+\contentsline {section}{\numberline {30.3}Virtual Machine Configuration}{63}{section.30.3}%
+\contentsline {section}{\numberline {30.4}Networking Architecture}{64}{section.30.4}%
+\contentsline {subsection}{\numberline {30.4.1}Network Components}{64}{subsection.30.4.1}%
+\contentsline {section}{\numberline {30.5}Control \& Automation}{64}{section.30.5}%
+\contentsline {subsection}{\numberline {30.5.1}API Management Layer}{64}{subsection.30.5.1}%
+\contentsline {section}{\numberline {30.6}Benefits of This Architecture}{64}{section.30.6}%
+\contentsline {chapter}{\numberline {31}Indices and tables}{65}{chapter.31}%

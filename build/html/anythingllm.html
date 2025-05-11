@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>install anything LLM using docker &#8212; Homelab 1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=cb25574f" />
+    <script src="_static/documentation_options.js?v=29a6c3e3"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="install-anything-llm-using-docker">
+<h1>install anything LLM using docker<a class="headerlink" href="#install-anything-llm-using-docker" title="Link to this heading">¶</a></h1>
+<section id="install-node-js-and-yarn">
+<h2>install Node.js and Yarn<a class="headerlink" href="#install-node-js-and-yarn" title="Link to this heading">¶</a></h2>
+<p>curl -fsSL <a class="reference external" href="https://deb.nodesource.com/setup_18.x">https://deb.nodesource.com/setup_18.x</a> | sudo -E bash -</p>
+<p>This will add the repository for Node.js 18.x (which is the current LTS version). If you want a different version (e.g., 20.x), just replace 18.x with the desired version.</p>
+<p>sudo apt install -y nodejs</p>
+</section>
+<section id="step-3-verify-installation">
+<h2>Step 3: Verify installation<a class="headerlink" href="#step-3-verify-installation" title="Link to this heading">¶</a></h2>
+<p>Check the installed version of Node.js and npm:
+node -v
+npm -v</p>
+</section>
+<section id="install-yarn">
+<h2>Install Yarn<a class="headerlink" href="#install-yarn" title="Link to this heading">¶</a></h2>
+<p>curl -sS <a class="reference external" href="https://dl.yarnpkg.com/debian/pubkey.gpg">https://dl.yarnpkg.com/debian/pubkey.gpg</a> | sudo apt-key add -
+echo “deb <a class="reference external" href="https://dl.yarnpkg.com/debian/">https://dl.yarnpkg.com/debian/</a> stable main” | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update
+sudo apt install yarn</p>
+</section>
+<section id="embedding">
+<h2>Embedding<a class="headerlink" href="#embedding" title="Link to this heading">¶</a></h2>
+<p>When your embedding engine preference is native we will use the ONNX all-MiniLM-L6-v2 model built by Xenova on HuggingFace.co. This model is a quantized and WASM version of the popular all-MiniLM-L6-v2 which produces a 384-dimension vector.</p>
+</section>
+</section>
+<section id="bookstack">
+<h1>bookstack<a class="headerlink" href="#bookstack" title="Link to this heading">¶</a></h1>
+<p><a class="reference external" href="https://github.com/linuxserver/docker-bookstack/pkgs/container/bookstack">https://github.com/linuxserver/docker-bookstack/pkgs/container/bookstack</a></p>
+<p><a class="reference external" href="https://hub.docker.com/r/solidnerd/bookstack/">https://hub.docker.com/r/solidnerd/bookstack/</a></p>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Homelab</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hpdl380p.html">Upgrading homelab HP DL 380p</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Where can I find more Templates?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usb.html">reading data from USB stick</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ramdisk.html">ramdisk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="share.html">sharing a directory for LXC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moving.html">moving a LXC container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nfs_netwerk.html">nfs network between linux containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nfs_proxmox_setup.html">NFS Host and Client Setup in Proxmox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nfs_client.html">nfs client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portainer.html">Portainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blender.html">server for blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ollama.html">ollama install and use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html#running-openwebui">running openwebui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html#copy-data-to-container">copy data to container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elastic.html">configure elasticview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mounting.html">mounting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mounting.html#edit-etc-fstab">edit  /etc/fstab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backuppve.html">Backup pve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raid.html">RAID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="melborp.html">melborp server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NVIDIA.html">Setting up NVIDIA Tesla P100</a></li>
+<li class="toctree-l1"><a class="reference internal" href="laptop.html">Laptop (or PC) mods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cluster.html">Proxmox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routing-table.html">Kernel IP Routing Table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDA.html">SDA (software defined architecture)</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2025, Jan Jansen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/anythingllm.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
