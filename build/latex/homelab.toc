@@ -61,27 +61,31 @@
 \contentsline {section}{\numberline {25.8}copy NVIDIA driver to LXC}{52}{section.25.8}%
 \contentsline {section}{\numberline {25.9}Install the NVIDIA Container Toolkit}{52}{section.25.9}%
 \contentsline {section}{\numberline {25.10}install ollama docker container for GPU usage}{52}{section.25.10}%
-\contentsline {chapter}{\numberline {26}Laptop (or PC) mods}{53}{chapter.26}%
-\contentsline {section}{\numberline {26.1}make route permanent}{53}{section.26.1}%
-\contentsline {chapter}{\numberline {27}Proxmox}{55}{chapter.27}%
-\contentsline {section}{\numberline {27.1}setting up an extra network bridge vmbr1}{55}{section.27.1}%
-\contentsline {section}{\numberline {27.2}Kernel IP routing table}{57}{section.27.2}%
-\contentsline {section}{\numberline {27.3}using the nodeport}{57}{section.27.3}%
-\contentsline {section}{\numberline {27.4}using the IP address}{57}{section.27.4}%
-\contentsline {section}{\numberline {27.5}modify dns config on laptop}{57}{section.27.5}%
-\contentsline {section}{\numberline {27.6}access http://nginx.example.com/ on talos within 10.10.10.X from 192.168.X.X}{57}{section.27.6}%
-\contentsline {chapter}{\numberline {28}Talos}{59}{chapter.28}%
-\contentsline {section}{\numberline {28.1}new install talos}{59}{section.28.1}%
-\contentsline {section}{\numberline {28.2}adding worker nodes}{60}{section.28.2}%
-\contentsline {section}{\numberline {28.3}label nodes}{60}{section.28.3}%
-\contentsline {chapter}{\numberline {29}Kernel IP Routing Table}{61}{chapter.29}%
-\contentsline {chapter}{\numberline {30}SDA (software defined architecture)}{63}{chapter.30}%
-\contentsline {section}{\numberline {30.1}Physical Infrastructure}{63}{section.30.1}%
-\contentsline {section}{\numberline {30.2}Proxmox Server Specifications}{63}{section.30.2}%
-\contentsline {section}{\numberline {30.3}Virtual Machine Configuration}{63}{section.30.3}%
-\contentsline {section}{\numberline {30.4}Networking Architecture}{64}{section.30.4}%
-\contentsline {subsection}{\numberline {30.4.1}Network Components}{64}{subsection.30.4.1}%
-\contentsline {section}{\numberline {30.5}Control \& Automation}{64}{section.30.5}%
-\contentsline {subsection}{\numberline {30.5.1}API Management Layer}{64}{subsection.30.5.1}%
-\contentsline {section}{\numberline {30.6}Benefits of This Architecture}{64}{section.30.6}%
-\contentsline {chapter}{\numberline {31}Indices and tables}{65}{chapter.31}%
+\contentsline {chapter}{\numberline {26}modify fan speed in proliant}{53}{chapter.26}%
+\contentsline {section}{\numberline {26.1}usefull URL}{53}{section.26.1}%
+\contentsline {section}{\numberline {26.2}Patch ILO}{53}{section.26.2}%
+\contentsline {section}{\numberline {26.3}set fan speed}{53}{section.26.3}%
+\contentsline {chapter}{\numberline {27}Laptop (or PC) mods}{55}{chapter.27}%
+\contentsline {section}{\numberline {27.1}make route permanent}{55}{section.27.1}%
+\contentsline {chapter}{\numberline {28}Proxmox}{57}{chapter.28}%
+\contentsline {section}{\numberline {28.1}setting up an extra network bridge vmbr1}{57}{section.28.1}%
+\contentsline {section}{\numberline {28.2}Kernel IP routing table}{59}{section.28.2}%
+\contentsline {section}{\numberline {28.3}using the nodeport}{59}{section.28.3}%
+\contentsline {section}{\numberline {28.4}using the IP address}{59}{section.28.4}%
+\contentsline {section}{\numberline {28.5}modify dns config on laptop}{59}{section.28.5}%
+\contentsline {section}{\numberline {28.6}access http://nginx.example.com/ on talos within 10.10.10.X from 192.168.X.X}{59}{section.28.6}%
+\contentsline {chapter}{\numberline {29}Talos}{61}{chapter.29}%
+\contentsline {section}{\numberline {29.1}new install talos}{61}{section.29.1}%
+\contentsline {section}{\numberline {29.2}adding worker nodes}{62}{section.29.2}%
+\contentsline {section}{\numberline {29.3}label nodes}{62}{section.29.3}%
+\contentsline {chapter}{\numberline {30}Kernel IP Routing Table}{63}{chapter.30}%
+\contentsline {chapter}{\numberline {31}SDA (software defined architecture)}{65}{chapter.31}%
+\contentsline {section}{\numberline {31.1}Physical Infrastructure}{65}{section.31.1}%
+\contentsline {section}{\numberline {31.2}Proxmox Server Specifications}{65}{section.31.2}%
+\contentsline {section}{\numberline {31.3}Virtual Machine Configuration}{65}{section.31.3}%
+\contentsline {section}{\numberline {31.4}Networking Architecture}{66}{section.31.4}%
+\contentsline {subsection}{\numberline {31.4.1}Network Components}{66}{subsection.31.4.1}%
+\contentsline {section}{\numberline {31.5}Control \& Automation}{66}{section.31.5}%
+\contentsline {subsection}{\numberline {31.5.1}API Management Layer}{66}{subsection.31.5.1}%
+\contentsline {section}{\numberline {31.6}Benefits of This Architecture}{66}{section.31.6}%
+\contentsline {chapter}{\numberline {32}Indices and tables}{67}{chapter.32}%

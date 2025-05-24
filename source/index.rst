@@ -32,6 +32,7 @@ Welcome to proxmox-dox's documentation!
    raid
    melborp
    NVIDIA
+   fan
    laptop
    cluster
    talos

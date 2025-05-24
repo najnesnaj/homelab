@@ -1,0 +1,26 @@
+# Postgres Vector Database Configuration
+PGVECTOR_HOST=172.17.0.4
+PGVECTOR_PORT=5432
+PGVECTOR_DATABASE=privategpt
+PGVECTOR_USER=postgres
+PGVECTOR_PASSWORD=your_secure_password
+PGVECTOR_SCHEMA=public
+
+# PrivateGPT API Settings
+API_PORT=8001
+API_HOST=0.0.0.0
+
+# Embedding Model (for generating vectors from documents)
+EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
+EMBEDDING_DEVICE=cpu  # or 'cuda' if you have a GPU
+
+# LLM Configuration (example for local Ollama or external API)
+LLM_PROVIDER=ollama
+OLLAMA_HOST=http://172.17.0.5:11434  # Adjust if Ollama runs in Docker
+# For external API (e.g., OpenAI), uncomment and configure:
+# LLM_PROVIDER=openai
+# OPENAI_API_KEY=your_openai_api_key
+
+# Storage and Data Paths
+DATA_DIR=/app/data
+VECTOR_STORE=pgvector  # Use pgvector for Postgres
