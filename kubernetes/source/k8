@@ -1,0 +1,34 @@
+Talos linux
+===========
+
+
+
+Talos Linux is a strong choice for running Kubernetes clusters because it’s designed specifically for Kubernetes, making it simple, secure, and efficient. 
+
+*    Built for Kubernetes: Talos is a minimal operating system created just for Kubernetes. It only includes the essential components needed to run Kubernetes, like containerd, which reduces complexity and makes setup and management easier compared to general-purpose Linux distributions like Ubuntu or CentOS.
+
+*    Immutable Design: Talos uses a read-only filesystem, meaning the core system can’t be changed once it’s deployed. This “immutable” approach ensures consistency across all nodes, prevents accidental changes (configuration drift), and makes it easier to troubleshoot issues by simply rebooting or replacing a node. It’s like resetting a device to factory settings to fix problems.
+
+*    Enhanced Security: Talos is highly secure by default. It eliminates tools like SSH, shells, and package managers, reducing the ways attackers can access the system. It uses mutual TLS (mTLS) for secure API communication, supports TPM-based disk encryption, and follows CIS security guidelines, making it ideal for sensitive or regulated environments.
+
+*    API-Driven Management: Instead of manually configuring servers, Talos is managed entirely through a modern API (using a tool called talosctl). This makes it easy to automate tasks like setting up clusters, upgrading Kubernetes, or scaling nodes, saving time and reducing errors. It’s especially useful for managing large or distributed systems.
+
+
+Why Choose Talos?
+-----------------
+
+Talos is a great choice if you want a secure, low-maintenance, and Kubernetes-focused OS that simplifies cluster management. It’s particularly valuable for:
+
+    Organizations running bare metal or edge deployments.
+    Teams prioritizing security and compliance.
+    Anyone wanting to automate and streamline Kubernetes operations.
+    Environments needing consistent, predictable infrastructure.
+
+However, it may not suit everyone. If your team relies heavily on traditional Linux tools (like SSH or bash) or needs a general-purpose OS, Talos’s minimalism and API-only approach might feel restrictive. It also requires learning its API for management, which could be a hurdle for smaller teams or hobbyists.
+In short, Talos is ideal for those who want a modern, secure, and efficient way to run Kubernetes with less overhead and more automation, especially in production or edge environments.
+
+
+Naked
+------
+
+Since security is important, Talos has practically no predefined setup. You have to construct your cluster using buildingblocks like Metallb and Traefik.

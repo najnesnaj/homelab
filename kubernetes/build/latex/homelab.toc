@@ -1,0 +1,37 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}intro}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Homelab}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Virtualisation}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Containerisation}{1}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Kubernetes}{1}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Kubernetes Architecture MetalLB, Traefik}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Overview of Setup}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}1. Proxmox and Networking Setup}{3}{section.2.2}%
+\contentsline {section}{\numberline {2.3}2. Talos Linux Kubernetes Cluster}{4}{section.2.3}%
+\contentsline {section}{\numberline {2.4}3. Kubernetes Networking with MetalLB and Traefik}{4}{section.2.4}%
+\contentsline {section}{\numberline {2.5}4. Laptop Configuration}{5}{section.2.5}%
+\contentsline {section}{\numberline {2.6}5. How It All Ties Together}{5}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Talos}{7}{chapter.3}%
+\contentsline {section}{\numberline {3.1}new install talos}{9}{section.3.1}%
+\contentsline {section}{\numberline {3.2}adding worker nodes}{9}{section.3.2}%
+\contentsline {section}{\numberline {3.3}label nodes}{10}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Proxmox installation notes}{11}{chapter.4}%
+\contentsline {section}{\numberline {4.1}setting up an extra network bridge vmbr1}{11}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Kernel IP routing table}{13}{section.4.2}%
+\contentsline {section}{\numberline {4.3}using the nodeport}{13}{section.4.3}%
+\contentsline {section}{\numberline {4.4}using the IP address}{13}{section.4.4}%
+\contentsline {section}{\numberline {4.5}modify dns config on laptop}{13}{section.4.5}%
+\contentsline {section}{\numberline {4.6}access http://nginx.example.com/ on talos within 10.10.10.X from 192.168.X.X}{13}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Kernel IP Routing Table}{15}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Laptop (or PC) mods}{17}{chapter.6}%
+\contentsline {section}{\numberline {6.1}make route permanent}{17}{section.6.1}%
+\contentsline {chapter}{\numberline {7}SDA (software defined architecture)}{19}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Physical Infrastructure}{19}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Proxmox Server Specifications}{19}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Virtual Machine Configuration}{19}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Networking Architecture}{20}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Network Components}{20}{subsection.7.4.1}%
+\contentsline {section}{\numberline {7.5}Control \& Automation}{20}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}API Management Layer}{20}{subsection.7.5.1}%
+\contentsline {section}{\numberline {7.6}Benefits of This Architecture}{20}{section.7.6}%
+\contentsline {chapter}{\numberline {8}Indices and tables}{21}{chapter.8}%

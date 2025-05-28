@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Setting up NVIDIA Tesla P100 &#8212; Homelab 1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=cb25574f" />
+    <script src="_static/documentation_options.js?v=29a6c3e3"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Laptop (or PC) mods" href="laptop.html" />
+    <link rel="prev" title="melborp server" href="melborp.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="setting-up-nvidia-tesla-p100">
+<h1>Setting up NVIDIA Tesla P100<a class="headerlink" href="#setting-up-nvidia-tesla-p100" title="Link to this heading">¶</a></h1>
+<p>the P100 was choses for balance between performance and price (second hand ebay)</p>
+<section id="aliexpress">
+<h2>Aliexpress<a class="headerlink" href="#aliexpress" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>PCIE 4.0 3.0 16X Riser Kabel 90/180 Graden Mount Video Grafisch</p>
+</div></blockquote>
+<p>Gpu 10pin Naar 1x8pin Dual 8(6 + 2)Pin Power Adapter Kabel Voor Hp Dl380 Gen8 Gen9 Server</p>
+</section>
+<section id="cutting-the-riser">
+<h2>Cutting the Riser<a class="headerlink" href="#cutting-the-riser" title="Link to this heading">¶</a></h2>
+<p>a special Riser for the HP Proliant gen8 is a good idea because it has a PCIE 16x in the middle which allows for the GPU  to be plugged in. (hard to find and expensive)</p>
+<p>I choose the cheap option (evidently) and cut a hole in a riser to extend with a riser cable into this riser. Some more cutting had to be done because the GPU is too long.</p>
+<p>For the gen9 there a cheaper riser card options, so no cutting needed…</p>
+</section>
+<section id="configure-the-bios">
+<h2>Configure the BIOS<a class="headerlink" href="#configure-the-bios" title="Link to this heading">¶</a></h2>
+<p>(changed IRQ for network card to 11, since conflict)</p>
+<p>enter BIOS (F9) and on main bios screen / “Service options” menu item. Under this, enable “PCI Express 64-bit BAR</p>
+</section>
+<section id="configure-proxmox-host">
+<h2>configure proxmox host<a class="headerlink" href="#configure-proxmox-host" title="Link to this heading">¶</a></h2>
+<p>PROXMOX PCI-E GPU passthru</p>
+<p>When running proxmox on this hardware, there is more config needed to enable passthru of this GPU to VM.
+Enable IOMMU</p>
+</section>
+<section id="the-idea">
+<h2>the idea<a class="headerlink" href="#the-idea" title="Link to this heading">¶</a></h2>
+<p>the idea is to get nvidia to work on the proxmox host (there will be kernel modules)</p>
+<p>for the LXC machines there is no need for kernel drivers!! since already on the host</p>
+</section>
+<section id="download-nvidia-drivers">
+<h2>Download NVIDIA drivers<a class="headerlink" href="#download-nvidia-drivers" title="Link to this heading">¶</a></h2>
+</section>
+<section id="adapt-lxc-conf">
+<h2>adapt lxc.conf<a class="headerlink" href="#adapt-lxc-conf" title="Link to this heading">¶</a></h2>
+<p>/etc/pve/lxc/105.conf</p>
+<p>Append these values with the IDs you noted earlier to your file like so. Note the placement of the 195, 234 and 509. This is for a SINGLE gpu also, if you have multiple add additional</p>
+</section>
+<section id="copy-nvidia-driver-to-lxc">
+<h2>copy NVIDIA driver to LXC<a class="headerlink" href="#copy-nvidia-driver-to-lxc" title="Link to this heading">¶</a></h2>
+</section>
+<section id="install-the-nvidia-container-toolkit">
+<h2>Install the NVIDIA Container Toolkit<a class="headerlink" href="#install-the-nvidia-container-toolkit" title="Link to this heading">¶</a></h2>
+</section>
+<section id="install-ollama-docker-container-for-gpu-usage">
+<h2>install ollama docker container for GPU usage<a class="headerlink" href="#install-ollama-docker-container-for-gpu-usage" title="Link to this heading">¶</a></h2>
+<p>#in portainer you still need to start ollama this way:</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Homelab</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hpdl380p.html">Upgrading homelab HP DL 380p</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Where can I find more Templates?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usb.html">reading data from USB stick</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ramdisk.html">ramdisk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="share.html">sharing a directory for LXC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moving.html">moving a LXC container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nfs_netwerk.html">nfs network between linux containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nfs_proxmox_setup.html">NFS Host and Client Setup in Proxmox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nfs_client.html">nfs client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portainer.html">Portainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blender.html">server for blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ollama.html">ollama install and use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html#running-openwebui">running openwebui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html#copy-data-to-container">copy data to container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elastic.html">configure elasticview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mounting.html">mounting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mounting.html#edit-etc-fstab">edit  /etc/fstab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backuppve.html">Backup pve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raid.html">RAID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="melborp.html">melborp server</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setting up NVIDIA Tesla P100</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#aliexpress">Aliexpress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cutting-the-riser">Cutting the Riser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-the-bios">Configure the BIOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-proxmox-host">configure proxmox host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-idea">the idea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#download-nvidia-drivers">Download NVIDIA drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adapt-lxc-conf">adapt lxc.conf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#copy-nvidia-driver-to-lxc">copy NVIDIA driver to LXC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-the-nvidia-container-toolkit">Install the NVIDIA Container Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-ollama-docker-container-for-gpu-usage">install ollama docker container for GPU usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="laptop.html">Laptop (or PC) mods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cluster.html">Proxmox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routing-table.html">Kernel IP Routing Table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDA.html">SDA (software defined architecture)</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="melborp.html" title="previous chapter">melborp server</a></li>
+      <li>Next: <a href="laptop.html" title="next chapter">Laptop (or PC) mods</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2025, Jan Jansen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/NVIDIA.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

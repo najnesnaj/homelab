@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  privategpt-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      - PGVECTOR_HOST=postgres_db
+      - PGVECTOR_PORT=5432
+      - PGVECTOR_DATABASE=${PGVECTOR_DATABASE}
+      - PGVECTOR_USER=${PGVECTOR_USER}
+      - PGVECTOR_PASSWORD=${PGVECTOR_PASSWORD}
+    depends_on:
+      - postgres_db
+    networks:
+      - privategpt-network
+    volumes:
+      - ./data:/app/data
+
+  postgres_db:
+    image: ankane/pgvector:latest
+    environment:
+      - POSTGRES_USER=${PGVECTOR_USER}
+      - POSTGRES_PASSWORD=${PGVECTOR_PASSWORD}
+      - POSTGRES_DB=${PGVECTOR_DATABASE}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - privategpt-network
+
+networks:
+  privategpt-network:
+    external: true
+
+volumes:
+  pg_data:
