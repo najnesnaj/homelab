@@ -27,6 +27,9 @@ enter BIOS (F9) and on main bios screen / "Service options" menu item. Under thi
 
 configure proxmox host
 ------------------------
+https://digitalspaceport.com/proxmox-lxc-gpu-passthru-setup-guide/
+
+
 
 PROXMOX PCI-E GPU passthru
 

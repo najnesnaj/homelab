@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.12.22)  24 MAY 2025 19:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.12.22)  28 MAY 2025 20:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -907,18 +907,18 @@ LaTeX Font Info:    Trying to load font information for T1+txtt on input line 4
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
 )
-<firefox_7FrqsKGmm4.png, id=576, 1232.35406pt x 441.14813pt>
+<firefox_7FrqsKGmm4.png, id=586, 1232.35406pt x 441.14813pt>
 File: firefox_7FrqsKGmm4.png Graphic file (type png)
 <use firefox_7FrqsKGmm4.png>
 Package pdftex.def Info: firefox_7FrqsKGmm4.png  used on input line 541.
 (pdftex.def)             Requested size: 444.75658pt x 159.21036pt.
  [21]
-<firefox_85gotgwjhw.png, id=586, 453.19313pt x 194.22563pt>
+<firefox_85gotgwjhw.png, id=596, 453.19313pt x 194.22563pt>
 File: firefox_85gotgwjhw.png Graphic file (type png)
 <use firefox_85gotgwjhw.png>
 Package pdftex.def Info: firefox_85gotgwjhw.png  used on input line 546.
 (pdftex.def)             Requested size: 444.75551pt x 190.61542pt.
-<firefox_1mRMoEMAtl.png, id=587, 721.94719pt x 484.81125pt>
+<firefox_1mRMoEMAtl.png, id=597, 721.94719pt x 484.81125pt>
 File: firefox_1mRMoEMAtl.png Graphic file (type png)
 <use firefox_1mRMoEMAtl.png>
 Package pdftex.def Info: firefox_1mRMoEMAtl.png  used on input line 558.
@@ -991,30 +991,30 @@ Chapter 25.
 Chapter 26.
 [53
 
-] [54
-
-]
+] [54]
 Chapter 27.
 LaTeX Font Info:    Font shape `T1/txtt/b/n' in size <10> not available
-(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 1051.
+(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 1090.
 
 LaTeX Font Info:    Font shape `T1/txtt/m/it' in size <10> not available
-(Font)              Font shape `T1/txtt/m/sl' tried instead on input line 1056.
+(Font)              Font shape `T1/txtt/m/sl' tried instead on input line 1095.
 
-[55] [56
+[55
+
+] [56
 
 ]
 Chapter 28.
 LaTeX Font Info:    Trying to load font information for TS1+txtt on input line 
-1120.
+1159.
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ts1txtt.fd
 File: ts1txtt.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `TS1/txtt/m/it' in size <10> not available
-(Font)              Font shape `TS1/txtt/m/sl' tried instead on input line 1120
+(Font)              Font shape `TS1/txtt/m/sl' tried instead on input line 1159
 .
  [57] [58{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 1191--1193
+Underfull \hbox (badness 10000) in paragraph at lines 1230--1232
 \T1/qtm/m/n/10 trae-fik Load-Bal-ancer 10.102.122.212 10.10.10.50 80:32178/TCP,
 443:32318/TCP 75m
  []
@@ -1022,75 +1022,92 @@ Underfull \hbox (badness 10000) in paragraph at lines 1191--1193
 [59] [60]
 Chapter 29.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1348--1352
+
+pdfTeX warning: pdflatex (file ./graphviz-82df4355bf99dd46529ca00d371a9c8a6c959
+ae6.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> all
+owed
+<graphviz-82df4355bf99dd46529ca00d371a9c8a6c959ae6.pdf, id=779, 469.755pt x 622
+.325pt>
+File: graphviz-82df4355bf99dd46529ca00d371a9c8a6c959ae6.pdf Graphic file (type 
+pdf)
+<use graphviz-82df4355bf99dd46529ca00d371a9c8a6c959ae6.pdf>
+Package pdftex.def Info: graphviz-82df4355bf99dd46529ca00d371a9c8a6c959ae6.pdf 
+ used on input line 1322.
+(pdftex.def)             Requested size: 469.75386pt x 622.32347pt.
+[61
+
+]
+Overfull \vbox (125.89346pt too high) has occurred while \output is active []
+
+
+[62 <./graphviz-82df4355bf99dd46529ca00d371a9c8a6c959ae6.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1389--1393
 []\T1/qtm/m/n/10 NODE NAMES-PACE TYPE ID VER-SION NAME VER-SION 10.10.10.178 ru
 n-time Ex-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1348--1352
+Underfull \hbox (badness 10000) in paragraph at lines 1389--1393
 \T1/qtm/m/n/10 ten-sion-Sta-tus 0 1 iscsi-tools v0.1.6 10.10.10.178 run-time Ex
 -ten-sion-Sta-tus 1 1 schematic
  []
 
-[61
-
-] [62]
+[63] [64]
 Chapter 30.
 
-Overfull \hbox (5.133pt too wide) in paragraph at lines 1410--1412
+Overfull \hbox (5.133pt too wide) in paragraph at lines 1451--1453
 []|\T1/qhv/m/n/10 Flags| 
  []
 
 
-Overfull \hbox (0.583pt too wide) in paragraph at lines 1413--1415
+Overfull \hbox (0.583pt too wide) in paragraph at lines 1454--1456
 []|\T1/qhv/m/n/10 Met-
  []
 
 
-Overfull \hbox (0.683pt too wide) in paragraph at lines 1464--1466
+Overfull \hbox (0.683pt too wide) in paragraph at lines 1505--1507
 []|\T1/qtm/m/n/10 1024| 
  []
 
 
-Overfull \hbox (0.683pt too wide) in paragraph at lines 1514--1516
+Overfull \hbox (0.683pt too wide) in paragraph at lines 1555--1557
 []|\T1/qtm/m/n/10 1024| 
  []
 
 
-Overfull \hbox (0.683pt too wide) in paragraph at lines 1539--1541
+Overfull \hbox (0.683pt too wide) in paragraph at lines 1580--1582
 []|\T1/qtm/m/n/10 1024| 
  []
 
 
-Overfull \hbox (2.343pt too wide) in paragraph at lines 1561--1563
+Overfull \hbox (2.343pt too wide) in paragraph at lines 1602--1604
 []|\T1/qtm/m/n/10 UGH| 
  []
 
 
-Overfull \hbox (0.683pt too wide) in paragraph at lines 1564--1566
+Overfull \hbox (0.683pt too wide) in paragraph at lines 1605--1607
 []|\T1/qtm/m/n/10 1024| 
  []
 
 
-Overfull \hbox (2.343pt too wide) in paragraph at lines 1586--1588
+Overfull \hbox (2.343pt too wide) in paragraph at lines 1627--1629
 []|\T1/qtm/m/n/10 UGH| 
  []
 
 
-Overfull \hbox (0.683pt too wide) in paragraph at lines 1589--1591
+Overfull \hbox (0.683pt too wide) in paragraph at lines 1630--1632
 []|\T1/qtm/m/n/10 1024| 
  []
 
-[63
+[65
 
-] [64
+] [66
 
 ]
 Chapter 31.
-[65] [66]
+[67] [68]
 Chapter 32.
-(./homelab.ind) [67
+(./homelab.ind) [69
 
 ] (./homelab.aux)
  ***********
@@ -1098,13 +1115,13 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `homelab.out' has not changed.
-(rerunfilecheck)             Checksum: 07B735A963955959AD63887DE7DC6E94;14383.
+(rerunfilecheck)             Checksum: 5E66F89F93DD9CBB83CDEEBB9ACE8F02;14699.
  ) 
 Here is how much of TeX's memory you used:
- 16717 strings out of 474222
- 275547 string characters out of 5748732
+ 16732 strings out of 474222
+ 276106 string characters out of 5748732
  2004975 words of memory out of 5000000
- 38414 multiletter control sequences out of 15000+600000
+ 38425 multiletter control sequences out of 15000+600000
  615186 words of font info for 82 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  72i,12n,79p,503b,670s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1118,10 +1135,10 @@ pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xbtt.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/urw/times/utmr8a.pfb>
-Output written on homelab.pdf (73 pages, 331559 bytes).
+Output written on homelab.pdf (75 pages, 345365 bytes).
 PDF statistics:
- 890 PDF objects out of 1000 (max. 8388607)
- 782 compressed objects within 8 object streams
- 168 named destinations out of 1000 (max. 500000)
- 756 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 920 PDF objects out of 1000 (max. 8388607)
+ 806 compressed objects within 9 object streams
+ 172 named destinations out of 1000 (max. 500000)
+ 777 words of extra memory for PDF output out of 10000 (max. 10000000)
 

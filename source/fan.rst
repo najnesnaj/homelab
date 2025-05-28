@@ -33,6 +33,13 @@ turn out there is a patched ILO rom. There is a procedure where you have to set 
 
 switch 1 of maintenance switch back to 0
 
+reset ILO
+---------
+
+I had a problem while executing : fan info (nothing showed)
+reset /map1 (this resets the ILO)
+
+
 set fan speed
 -------------
 
@@ -44,3 +51,22 @@ set fan speed
 
 
 Temp seems OK if fans are at 55%
+
+
+playing with individuals fans
+------------------------------
+ "fan p 0 min 10"
+
+"fan p 1 min 10"
+
+"fan p 2 min 10"
+
+"fan p 3 min 10"
+
+"fan p 0 max 70",
+
+"fan p 1 max 70",
+
+"fan p 2 max 70",
+
+"fan p 3 max 70" 

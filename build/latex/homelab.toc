@@ -64,7 +64,9 @@
 \contentsline {chapter}{\numberline {26}modify fan speed in proliant}{53}{chapter.26}%
 \contentsline {section}{\numberline {26.1}usefull URL}{53}{section.26.1}%
 \contentsline {section}{\numberline {26.2}Patch ILO}{53}{section.26.2}%
-\contentsline {section}{\numberline {26.3}set fan speed}{53}{section.26.3}%
+\contentsline {section}{\numberline {26.3}reset ILO}{53}{section.26.3}%
+\contentsline {section}{\numberline {26.4}set fan speed}{53}{section.26.4}%
+\contentsline {section}{\numberline {26.5}playing with individuals fans}{54}{section.26.5}%
 \contentsline {chapter}{\numberline {27}Laptop (or PC) mods}{55}{chapter.27}%
 \contentsline {section}{\numberline {27.1}make route permanent}{55}{section.27.1}%
 \contentsline {chapter}{\numberline {28}Proxmox}{57}{chapter.28}%
@@ -75,17 +77,17 @@
 \contentsline {section}{\numberline {28.5}modify dns config on laptop}{59}{section.28.5}%
 \contentsline {section}{\numberline {28.6}access http://nginx.example.com/ on talos within 10.10.10.X from 192.168.X.X}{59}{section.28.6}%
 \contentsline {chapter}{\numberline {29}Talos}{61}{chapter.29}%
-\contentsline {section}{\numberline {29.1}new install talos}{61}{section.29.1}%
-\contentsline {section}{\numberline {29.2}adding worker nodes}{62}{section.29.2}%
-\contentsline {section}{\numberline {29.3}label nodes}{62}{section.29.3}%
-\contentsline {chapter}{\numberline {30}Kernel IP Routing Table}{63}{chapter.30}%
-\contentsline {chapter}{\numberline {31}SDA (software defined architecture)}{65}{chapter.31}%
-\contentsline {section}{\numberline {31.1}Physical Infrastructure}{65}{section.31.1}%
-\contentsline {section}{\numberline {31.2}Proxmox Server Specifications}{65}{section.31.2}%
-\contentsline {section}{\numberline {31.3}Virtual Machine Configuration}{65}{section.31.3}%
-\contentsline {section}{\numberline {31.4}Networking Architecture}{66}{section.31.4}%
-\contentsline {subsection}{\numberline {31.4.1}Network Components}{66}{subsection.31.4.1}%
-\contentsline {section}{\numberline {31.5}Control \& Automation}{66}{section.31.5}%
-\contentsline {subsection}{\numberline {31.5.1}API Management Layer}{66}{subsection.31.5.1}%
-\contentsline {section}{\numberline {31.6}Benefits of This Architecture}{66}{section.31.6}%
-\contentsline {chapter}{\numberline {32}Indices and tables}{67}{chapter.32}%
+\contentsline {section}{\numberline {29.1}new install talos}{63}{section.29.1}%
+\contentsline {section}{\numberline {29.2}adding worker nodes}{63}{section.29.2}%
+\contentsline {section}{\numberline {29.3}label nodes}{64}{section.29.3}%
+\contentsline {chapter}{\numberline {30}Kernel IP Routing Table}{65}{chapter.30}%
+\contentsline {chapter}{\numberline {31}SDA (software defined architecture)}{67}{chapter.31}%
+\contentsline {section}{\numberline {31.1}Physical Infrastructure}{67}{section.31.1}%
+\contentsline {section}{\numberline {31.2}Proxmox Server Specifications}{67}{section.31.2}%
+\contentsline {section}{\numberline {31.3}Virtual Machine Configuration}{67}{section.31.3}%
+\contentsline {section}{\numberline {31.4}Networking Architecture}{68}{section.31.4}%
+\contentsline {subsection}{\numberline {31.4.1}Network Components}{68}{subsection.31.4.1}%
+\contentsline {section}{\numberline {31.5}Control \& Automation}{68}{section.31.5}%
+\contentsline {subsection}{\numberline {31.5.1}API Management Layer}{68}{subsection.31.5.1}%
+\contentsline {section}{\numberline {31.6}Benefits of This Architecture}{68}{section.31.6}%
+\contentsline {chapter}{\numberline {32}Indices and tables}{69}{chapter.32}%

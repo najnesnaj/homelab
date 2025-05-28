@@ -64,7 +64,7 @@
 
 
 \title{Homelab}
-\date{May 24, 2025}
+\date{May 28, 2025}
 \release{1}
 \author{Jan Jansen}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -945,6 +945,9 @@ enter BIOS (F9) and on main bios screen / “Service options” menu item. Under
 \section{configure proxmox host}
 \label{\detokenize{NVIDIA:configure-proxmox-host}}
 \sphinxAtStartPar
+\sphinxurl{https://digitalspaceport.com/proxmox-lxc-gpu-passthru-setup-guide/}
+
+\sphinxAtStartPar
 PROXMOX PCI\sphinxhyphen{}E GPU passthru
 
 \sphinxAtStartPar
@@ -1014,10 +1017,46 @@ turn out there is a patched ILO rom. There is a procedure where you have to set 
 switch 1 of maintenance switch back to 0
 
 
+\section{reset ILO}
+\label{\detokenize{fan:reset-ilo}}
+\sphinxAtStartPar
+I had a problem while executing : fan info (nothing showed)
+reset /map1 (this resets the ILO)
+
+
 \section{set fan speed}
 \label{\detokenize{fan:set-fan-speed}}
 \sphinxAtStartPar
 Temp seems OK if fans are at 55\%
+
+
+\section{playing with individuals fans}
+\label{\detokenize{fan:playing-with-individuals-fans}}\begin{quote}
+
+\sphinxAtStartPar
+“fan p 0 min 10”
+\end{quote}
+
+\sphinxAtStartPar
+“fan p 1 min 10”
+
+\sphinxAtStartPar
+“fan p 2 min 10”
+
+\sphinxAtStartPar
+“fan p 3 min 10”
+
+\sphinxAtStartPar
+“fan p 0 max 70”,
+
+\sphinxAtStartPar
+“fan p 1 max 70”,
+
+\sphinxAtStartPar
+“fan p 2 max 70”,
+
+\sphinxAtStartPar
+“fan p 3 max 70”
 
 \sphinxstepscope
 
@@ -1280,6 +1319,8 @@ ip\PYG{+w}{ }a
 
 \chapter{Talos}
 \label{\detokenize{talos:talos}}\label{\detokenize{talos::doc}}
+\sphinxincludegraphics[]{graphviz-82df4355bf99dd46529ca00d371a9c8a6c959ae6.pdf}
+
 \sphinxAtStartPar
 Talos is a modern OS for Kubernetes. It is designed to be secure, immutable, and minimal. Talos is a self\sphinxhyphen{}hosted Kubernetes distribution that runs on bare metal or virtualized infrastructure. Talos is designed to be managed by a central Kubernetes control plane, which can be hosted on the same cluster or on a separate cluster.
 

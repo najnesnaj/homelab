@@ -1,6 +1,55 @@
 Talos
 =====
 
+
+.. graphviz::
+
+
+    digraph system {
+        // Graph styling
+        rankdir=BT;
+        node [shape=box, style=filled, fillcolor=lightblue];
+        edge [color=blue];
+    
+        // Components
+        www [label="local network request : www.example.com"];
+        proxmox [label="Proxmox Server"];
+        router [label="Virtual Router/DHCP"];
+        vnet [label="Virtual Network"];
+        talos [label="Talos Kubernetes Cluster"];
+        node1 [label="Node 1"];
+        node2 [label="Node 2"];
+        node3 [label="Node 3"];
+        client [label="Talos Client"];
+        VM1 [label="VM1"];
+        VM2 [label="VM2"];
+        VM3 [label="VM3"];
+        LXC1 [label="LXC1"];
+        LXC2  [label="LXC2"];
+        // Relationships
+        www -> proxmox;
+        LXC2 -> client -> talos;
+        proxmox -> LXC2
+        proxmox -> LXC1 -> router -> vnet;
+        proxmox ->  vnet;
+        proxmox ->  VM1 -> node1;
+        proxmox ->  VM2 -> node2;
+        proxmox ->  VM3 -> node3;
+        node1  -> talos;
+        node2  -> talos;
+        node3  -> talos ;
+        vnet -> VM1
+        vnet -> VM2 
+        vnet -> VM3 
+        vnet -> LXC2 
+    }
+    
+    
+
+
+
+
+
 Talos is a modern OS for Kubernetes. It is designed to be secure, immutable, and minimal. Talos is a self-hosted Kubernetes distribution that runs on bare metal or virtualized infrastructure. Talos is designed to be managed by a central Kubernetes control plane, which can be hosted on the same cluster or on a separate cluster.
 
 talosctl config add my-cluster --endpoints 192.168.0.242
