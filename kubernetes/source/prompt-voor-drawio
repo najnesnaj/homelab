@@ -1,0 +1,5 @@
+Gebruik een draw.io XML-structuur met correcte mxGeometry-definities en een duidelijke hiërarchie, test mogelijk door importeren in  draw.io (app.diagrams.net). 
+
+Kan je in draw.io XML formaat het volgende weergeven : een laptop (browser met : http://www.example.com) connecteert naar een server (Proxmox) die 3 virtuele machines heeft : op 1 VM staat het talos control plane, op de 2 andere staan Talos workernodes. Verder heeft de server (proxmox) ook nog 2 LXC met op de ene een talos-client en op de andere een DHCP/router. De 3 virtuele machines vormen samen een kubernetes cluster, die een NGINX pod/service hosten(www.example.com)
+
+

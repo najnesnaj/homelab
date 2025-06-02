@@ -1,0 +1,8 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}The case of Deutz}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Deutz AG}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Overview}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Share Information}{3}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Useful Links}{3}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Investment Masters}{5}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Indices and tables}{7}{chapter.4}%

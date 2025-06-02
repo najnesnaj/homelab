@@ -1,0 +1,72 @@
+<mxGraphModel>
+  <root>
+    <!-- Laptop -->
+    <mxCell id="laptop" value="Laptop&lt;br&gt;Browser: http://www.example.com" style="shape=image;image=img/lib/general/Laptop.png" vertex="1">
+      <mxGeometry x="50" y="50" width="80" height="60" />
+    </mxCell>
+
+    <!-- Proxmox Server -->
+    <mxCell id="proxmox" value="Proxmox Server" style="shape=rectangle;fillColor=#f8f8f8;strokeColor=#000000" vertex="1">
+      <mxGeometry x="300" y="50" width="400" height="500" />
+    </mxCell>
+
+    <!-- Kubernetes Cluster (groepering van VM's) -->
+    <mxCell id="k8s_cluster" value="Kubernetes Cluster" style="shape=swimlane;fillColor=#e0e0e0" vertex="1" parent="proxmox">
+      <mxGeometry x="320" y="100" width="350" height="300" />
+    </mxCell>
+
+    <!-- Talos Control Plane VM -->
+    <mxCell id="vm_control" value="Talos Control Plane" style="shape=rectangle;fillColor=#d0e6ff" vertex="1" parent="k8s_cluster">
+      <mxGeometry x="340" y="150" width="100" height="60" />
+    </mxCell>
+
+    <!-- Talos Worker Node 1 -->
+    <mxCell id="vm_worker1" value="Talos Worker Node 1" style="shape=rectangle;fillColor=#d0e6ff" vertex="1" parent="k8s_cluster">
+      <mxGeometry x="340" y="230" width="100" height="60" />
+    </mxCell>
+
+    <!-- Talos Worker Node 2 -->
+    <mxCell id="vm_worker2" value="Talos Worker Node 2" style="shape=rectangle;fillColor=#d0e6ff" vertex="1" parent="k8s_cluster">
+      <mxGeometry x="340" y="310" width="100" height="60" />
+    </mxCell>
+
+    <!-- NGINX Pod/Service -->
+    <mxCell id="nginx_pod" value="NGINX Pod/Service&lt;br&gt;www.example.com" style="shape=rectangle;fillColor=#ffcc99" vertex="1" parent="k8s_cluster">
+      <mxGeometry x="460" y="150" width="100" height="60" />
+    </mxCell>
+
+    <!-- Talos Client LXC -->
+    <mxCell id="lxc_client" value="Talos-client" style="shape=rectangle;fillColor=#ccffcc" vertex="1" parent="proxmox">
+      <mxGeometry x="320" y="420" width="100" height="60" />
+    </mxCell>
+
+    <!-- DHCP/Router LXC -->
+    <mxCell id="lxc_router" value="DHCP/Router" style="shape=rectangle;fillColor=#ccffcc" vertex="1" parent="proxmox">
+      <mxGeometry x="460" y="420" width="100" height="60" />
+    </mxCell>
+
+    <!-- Connecties -->
+    <!-- Laptop naar Proxmox (NGINX) -->
+    <mxCell id="conn_laptop_proxmox" style="edgeStyle=orthogonalEdgeStyle;curved=1" edge="1" source="laptop" target="nginx_pod">
+      <mxGeometry relative="1" />
+    </mxCell>
+
+    <!-- Talos-client naar Kubernetes Cluster -->
+    <mxCell id="conn_client_k8s" style="edgeStyle=orthogonalEdgeStyle" edge="1" source="lxc_client" target="k8s_cluster">
+      <mxGeometry relative="1" />
+    </mxCell>
+
+    <!-- DHCP/Router naar extern netwerk (optioneel) -->
+    <mxCell id="conn_router_ext" style="edgeStyle=orthogonalEdgeStyle" edge="1" source="lxc_router" target="laptop">
+      <mxGeometry relative="1" />
+    </mxCell>
+
+    <!-- Interne Kubernetes verbindingen -->
+    <mxCell id="conn_control_worker1" style="edgeStyle=orthogonalEdgeStyle" edge="1" source="vm_control" target="vm_worker1">
+      <mxGeometry relative="1" />
+    </mxCell>
+    <mxCell id="conn_control_worker2" style="edgeStyle=orthogonalEdgeStyle" edge="1" source="vm_control" target="vm_worker2">
+      <mxGeometry relative="1" />
+    </mxCell>
+  </root>
+</mxGraphModel>

@@ -1,7 +1,5 @@
 Talos
 =====
-
-
 .. graphviz::
 
 
@@ -45,7 +43,14 @@ Talos
     }
     
     
-
+    digraph G {
+      Laptop [shape=box, label="Laptop"];
+      LAN [shape=ellipse, label="LAN"];
+      Server [shape=box, label="Server"];
+    
+      Laptop -> LAN;
+      LAN -> Server;
+    }   
 
 
 
